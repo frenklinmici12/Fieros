@@ -1,1 +1,1 @@
-Fieros is a website designed for video game players.
+Fieros is a website designed for video game players. React frontend + Flask backend with RAWG API for game data. rawg.io
