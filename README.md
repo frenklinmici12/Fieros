@@ -1,0 +1,1 @@
+Fieros is a website designed for video game players.

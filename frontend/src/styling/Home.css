@@ -1,0 +1,25 @@
+.navbar {
+    border: 1px solid white;
+    border-radius: 30px;
+    padding: 15px;
+    font-size: 20px;
+    background-color: rgb(100,100,100);
+}
+
+.navbar input {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.navbar button {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.game-showcase {
+    border: 1px solid red;
+    margin: 40px;
+    height: 1000px;
+}
