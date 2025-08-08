@@ -1,14 +1,12 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_caching import Cache
-
-import requests
-
-import os
 from dotenv import load_dotenv
+import requests
+import os
 
 load_dotenv()  # loads .env file variables
-API_KEY = os.getenv("RAWG_API_KEY")
+API_KEY = os.getenv("RAWG_API_KEY") # in the .env file
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
@@ -16,7 +14,6 @@ CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 # Simple in-memory cache configuration, each decorator will use this config
 app.config['CACHE_TYPE'] = 'SimpleCache'
 app.config['CACHE_DEFAULT_TIMEOUT'] = 36000  # 10 hours = 36000 seconds
-
 cache = Cache(app)
 
 #formalities end
