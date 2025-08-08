@@ -1,10 +1,20 @@
-import { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Login from './pages/Login'
-import axios from 'axios'
+/*
+  Author: Frenklin Mici
+  This file's purpose is to be the router. All it does
+  is set up the structure
+*/
 
-import './App.css'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+
+import './variables.css'
+
+//import pages here as i do them
+import Home from './pages/Home';
+import Login from './pages/Login';
+import GamePage from './pages/GamePage'
+
+
+import './App.css';
 
 function App() {
   return (
@@ -12,6 +22,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}></Route>
+        {/*Keep adding routes ex: register, my profile, etc...*/}
+        <Route path="/game/:gameId" element={<GamePage/>}></Route>
+        {/*<Route path="/user/:userName" element={<UserProfile/>}></Route>*/}
       </Routes>
     </Router>
   );
