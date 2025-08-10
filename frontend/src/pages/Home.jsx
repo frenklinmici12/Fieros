@@ -13,7 +13,7 @@ function Home() {
 
     //fetch from backend
     const fetchGames = () => {
-        const url = 'http://localhost:5001' //where our backend lives: CHANGE THIS IF FETCHING FROM SOMEWHERE ELSE
+        const url = import.meta.env.VITE_SERVER_URL //where our backend lives (the Flask): CHANGE THIS IF FETCHING FROM SOMEWHERE ELSE
 
         // FEATURED GAMES
         axios.get(url + '/api/featured-games')

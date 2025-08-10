@@ -2,7 +2,33 @@ import { useParams } from "react-router-dom";
 
 function GamePage() {
   const { gameId } = useParams()
-  return <h1>Welcome to {gameId}</h1>;
+
+  const [game, setGame] = useState(null);
+
+  //maybe then for suggestions...
+  //const [similarGames, setSimilarGames] = useState([])
+
+  //fetch game details from backend
+  const fetchGame = () => {
+      const url = import.meta.env.VITE_SERVER_URL
+
+      // fetch game by id
+      axios.get(url + '/api/' + gameId)
+      .then(response => setGame(response.data.results))
+      .catch(err => console.log("Error fetching featured games: ", err))
+  }
+
+  //fetch API data from backend, might add it to fetch on an interval
+  useEffect(() => {
+      fetchGame()
+  }, [])
+  
+  
+  return (
+    <div>
+      <h1>{game.name}</h1>
+    </div>
+  );
 }
 
 export default GamePage;

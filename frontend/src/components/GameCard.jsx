@@ -1,5 +1,5 @@
 import React from 'react';
-import './GameCard.css'; 
+import '/src/styling/GameCard.css'; 
 import { Link } from 'react-router-dom';
 
 function GameCard({ game }) {
