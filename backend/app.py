@@ -1,9 +1,14 @@
-from flask import Flask, jsonify
-from flask_cors import CORS
-from flask_caching import Cache
-from dotenv import load_dotenv
-import requests
-import os
+# Author: Frenklin Mici
+# Purpose: Fieros backend
+
+# RAWG API docs: https://api.rawg.io/docs/
+
+from flask import Flask, jsonify #framework, json
+from flask_cors import CORS #for linking frontend to backend
+from flask_caching import Cache # cache data saves api calls and really efficient
+from dotenv import load_dotenv # .env for api key
+import requests # fetch from api
+import os # access .env
 
 load_dotenv()  # loads .env file variables
 API_KEY = os.getenv("RAWG_API_KEY") # in the .env file
@@ -16,7 +21,8 @@ app.config['CACHE_TYPE'] = 'SimpleCache'
 app.config['CACHE_DEFAULT_TIMEOUT'] = 36000  # 10 hours = 36000 seconds
 cache = Cache(app)
 
-#formalities end
+
+# ========================== FETCHING GAMES ==========================
 
 #just making sure its working!
 @cache.cached()
@@ -48,6 +54,7 @@ def fetch_data(url):
     except requests.exceptions.RequestException as e:
         return jsonify({"error": "Failed to fetch data", "details": str(e)}), 500
 
+# Home
 @app.route("/api/featured-games")
 @cache.cached()
 def featured_games():
@@ -56,17 +63,35 @@ def featured_games():
     #ordering=-added is games most added by users (to give us the most popular games rn)
     return fetch_data(url)
 
+# Home
 @app.route("/api/top-rated-games")
 @cache.cached()
 def top_rated_games():
     url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&ordering=-metacritic" 
     return fetch_data(url)
 
+# Home
 @app.route("/api/new-games")
 @cache.cached()
 def new_games():
     url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&dates=2025-04-01,2025-08-01&ordering=-added" 
     return fetch_data(url)
+
+# GamePage
+@app.route("/api/<int:game_id>")
+@cache.cached()
+def game_page(game_id):
+    url = f"https://api.rawg.io/api/games/{game_id}?key={API_KEY}" 
+    # here, game.id is a PATH parameter, meaning it comes before the '?'. 
+    # it controls the path. After the '?' come the query parameters, which narrow the search. 
+    # the api key must also be there
+    return fetch_data(url)
+
+
+
+
+
+
 
 
 #run backend
