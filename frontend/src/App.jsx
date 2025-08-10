@@ -9,9 +9,9 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './variables.css'
 
 //import pages here as i do them
-import Home from './pages/Home';
-import Login from './pages/Login';
-import GamePage from './pages/GamePage'
+import Home from './pages/Home/Home.jsx';
+import Login from './pages/Login/Login.jsx';
+import GamePage from './pages/GamePage/GamePage.jsx'
 
 
 import './App.css';

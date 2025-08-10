@@ -63,38 +63,3 @@ h1, h2 {
 .navbar button:hover {
   background-color: var(--color-accent-hover);
 }
-
-/* Shared section styling */
-.section {
-  margin: 1rem 1rem 2rem 1rem;
-  color: var(--color-accent);
-}
-
-.section h2 {
-  margin-bottom: 0.75rem;
-}
-
-/* Carousel container shared by both sections */
-.carousel {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  gap: 1rem;
-  padding-bottom: 1rem;
-  scroll-padding-left: 1rem;
-  -webkit-overflow-scrolling: touch;
-}
-
-.carousel::-webkit-scrollbar {
-  height: var(--scrollbar-height);
-}
-
-.carousel::-webkit-scrollbar-thumb {
-  background-color: var(--color-accent);
-  border-radius: var(--border-radius);
-}
-
-.carousel::-webkit-scrollbar-track {
-  background: transparent;
-}
-

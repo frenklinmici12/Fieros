@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-import '/src/styling/Home.css'
-import GameCard from '../components/GameCard';
+import GameCard from '../../components/GameCard/GameCard.jsx';
+import Navbar from '../../components/Navbar/Navbar.jsx';
+import './Home.css';
 
 function Home() {
     //where our RAWG api data will live
@@ -38,16 +38,9 @@ function Home() {
     
     //the actual page
     return (
-        <div>
-            <h1>Welcome to Fieros!</h1>
-            <nav className='navbar'>
-                <Link to="/login">Login</Link> |{" "}
-                <Link to="/register">Register</Link> |{" "}
-                <Link to="/about">About</Link> | {" "}
-
-                <input type="search" placeholder='Search for games here...'></input>{" "}
-                <button>Search</button>
-            </nav>
+        <div className='Home'>
+            <Navbar msg="Welcome to Fieros!"></Navbar>
+            
             <div className='game-showcase'>
                 <div className="section featured-section">
                     <h2>Featured Games</h2>
