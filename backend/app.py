@@ -87,6 +87,12 @@ def game_page(game_id):
     # the api key must also be there
     return fetch_data(url)
 
+# Search Feature for Navbar
+@app.route("/api/<string:search_query>")
+@cache.cached()
+def search(search_query):
+    url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=60&search={search_query}" 
+    return fetch_data(url)
 
 
 
