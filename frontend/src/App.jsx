@@ -12,7 +12,9 @@ import './variables.css'
 import Home from './pages/Home/Home.jsx';
 import Login from './pages/Login/Login.jsx';
 import GamePage from './pages/GamePage/GamePage.jsx'
-
+import SearchResults from './pages/SearchResults/SearchResults.jsx';
+import About from './pages/About/About.jsx';
+import Register from './pages/Register/Register.jsx';
 
 import './App.css';
 
@@ -24,7 +26,10 @@ function App() {
         <Route path="/login" element={<Login/>}></Route>
         {/*Keep adding routes ex: register, my profile, etc...*/}
         <Route path="/game/:gameId" element={<GamePage/>}></Route>
+        <Route path="/register" element={<Register/>}></Route>
+        <Route path="/results" element={<SearchResults/>}></Route>
         {/*<Route path="/user/:userName" element={<UserProfile/>}></Route>*/}
+        <Route path="/about" element={<About/>}></Route>
       </Routes>
     </Router>
   );
