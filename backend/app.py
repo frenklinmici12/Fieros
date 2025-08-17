@@ -55,12 +55,19 @@ def fetch_data(url):
         return jsonify({"error": "Failed to fetch data", "details": str(e)}), 500
 
 # Home
+@app.route("/api/trending-games")
+@cache.cached()
+def trending_games():
+    url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&ordering=-added&dates=2025-06-15,2026-08-16" 
+    #page_size is how many games it will fetch, 
+    #ordering=-added is games most added by users (to give us the most popular games rn)
+    return fetch_data(url)
+
+# Home
 @app.route("/api/featured-games")
 @cache.cached()
 def featured_games():
     url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&ordering=-added" 
-    #page_size is how many games it will fetch, 
-    #ordering=-added is games most added by users (to give us the most popular games rn)
     return fetch_data(url)
 
 # Home
@@ -68,6 +75,13 @@ def featured_games():
 @cache.cached()
 def top_rated_games():
     url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&ordering=-metacritic" 
+    return fetch_data(url)
+
+# Home
+@app.route("/api/most-anticipated")
+@cache.cached()
+def most_anticipated():
+    url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&dates=2025-08-16,2030-08-01&ordering=-added" 
     return fetch_data(url)
 
 # Home
@@ -91,12 +105,15 @@ def game_page(game_id):
 @app.route("/api/<string:search_query>")
 @cache.cached()
 def search(search_query):
-    url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=60&search={search_query}" 
+    url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&search={search_query}" 
     return fetch_data(url)
 
-
-
-
+# Genres
+@app.route("/api/games/genre/<string:genre>")
+@cache.cached()
+def genre(genre):
+    url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&genres={genre}" 
+    return fetch_data(url)
 
 
 
