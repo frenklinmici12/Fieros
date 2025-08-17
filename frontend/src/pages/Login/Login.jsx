@@ -1,5 +1,14 @@
+import Navbar from "../../components/Navbar/Navbar";
+import "./Login.css"
+
 function Login() {
-  return <h1>Welcome to Login!</h1>;
+
+  return (
+    <div>
+      <Navbar msg="Fieros - Login"></Navbar>
+      <p>This is the login page.</p>
+    </div>
+  )
 }
 
 export default Login;

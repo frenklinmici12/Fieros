@@ -10,6 +10,7 @@ import './variables.css'
 
 //import pages here as i do them
 import Home from './pages/Home/Home.jsx';
+import Genres from './pages/Genres/Genres.jsx';
 import Login from './pages/Login/Login.jsx';
 import GamePage from './pages/GamePage/GamePage.jsx'
 import SearchResults from './pages/SearchResults/SearchResults.jsx';
@@ -23,6 +24,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/genres" element={<Genres/>}/>
         <Route path="/login" element={<Login/>}></Route>
         {/*Keep adding routes ex: register, my profile, etc...*/}
         <Route path="/game/:gameId" element={<GamePage/>}></Route>

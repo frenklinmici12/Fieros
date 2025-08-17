@@ -23,6 +23,7 @@ function Navbar( props ) {
             <h1>{props.msg}</h1>
             <nav className='navbar'>
                 <Link to="/">Home</Link> |{" "}
+                <Link to="/genres">Genres</Link> |{" "}
                 <Link to="/login">Login</Link> |{" "}
                 <Link to="/register">Register</Link> |{" "}
                 <Link to="/about">About</Link> | {" "}

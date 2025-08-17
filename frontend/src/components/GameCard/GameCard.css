@@ -9,6 +9,8 @@
   box-shadow: 0 4px 8px var(--color-shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+
+  text-decoration: none; /* make it so it doesnt show as a link with an underline */
 }
 
 .game-card:hover {
@@ -32,3 +34,5 @@
   color: var(--color-accent);
   user-select: none;
 }
+
+
