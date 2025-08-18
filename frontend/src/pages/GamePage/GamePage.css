@@ -1,111 +1,87 @@
 .GamePage {
-  max-width: 900px;
-  margin: 1.5rem auto;
-  padding: 1.5rem;
-  background-color: var(--color-background-alt);
-  border-radius: var(--card-border-radius);
-  box-shadow: 0 4px 12px var(--color-shadow);
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* left column (quick-info), right column split */
+  gap: 2rem;
+  margin: 2rem;
   color: var(--color-text);
-  font-family: var(--font-family-base);
+
+}
+
+/* ====== Island styling with shadow accent ====== */
+.quick-info,
+.detailed-info,
+.user-info {
+  background-color: var(--color-background-alt, #1a1a1a);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 8px var(--color-shadow);
+}
+
+.quick-info:hover,
+.detailed-info:hover,
+.user-info:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    0 10px 25px rgba(0, 0, 0, 0.45),
+    0 0 0 2px var(--color-accent, #ff7a59);
+}
+
+/* ====== Quick Info (left side full height) ====== */
+.quick-info {
+  grid-row: span 2; /* take up both rows */
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-}
-
-.quick-info {
-  display: flex;
-  gap: 1.5rem;
-  align-items: flex-start;
-  border-bottom: 1px solid var(--color-input-border);
-  padding-bottom: 1.5rem;
-}
-
-.quick-info img {
-  width: 220px;
-  height: auto;
-  border-radius: var(--card-border-radius);
-  box-shadow: 0 2px 8px var(--color-shadow);
-  flex-shrink: 0;
+  align-items: center;
+  text-align: center;
 }
 
 .quick-info h1 {
-  font-weight: var(--font-weight-bold);
-  font-size: 2.2rem;
-  margin: 0 0 0.5rem 0;
+  margin-bottom: 1rem;
   color: var(--color-accent);
+}
+
+.quick-info img {
+  max-width: 100%;
+  border-radius: var(--border-radius);
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4); /* image pop */
 }
 
 .quick-info p {
-  margin: 0.25rem 0;
-  font-weight: var(--font-weight-semibold);
-  font-size: 1rem;
+  margin: 0.5rem 0;
 }
 
-.quick-info p:last-of-type {
-  margin-top: 1rem;
-  font-style: italic;
-  color: var(--color-text);
-}
-
-.quick-info > div {
-  flex: 1;
-}
-
+/* ====== Right side (split into 2 islands stacked) ====== */
 .detailed-info {
-  background-color: var(--color-background);
-  padding: 1.25rem 1.5rem;
-  border-radius: var(--card-border-radius);
-  box-shadow: 0 2px 10px var(--color-shadow);
+  margin-bottom: 2rem;
 }
 
 .detailed-info h2 {
-  margin-top: 0;
   margin-bottom: 1rem;
-  font-weight: var(--font-weight-bold);
-  font-size: 1.5rem;
-  border-bottom: 2px solid var(--color-accent);
-  padding-bottom: 0.3rem;
-}
-
-.detailed-info p, .detailed-info div {
-  line-height: 1.5;
-  font-size: 1rem;
-  color: var(--color-text);
-}
-
-.user-info {
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  background-color: var(--color-background-alt);
-  border-radius: var(--border-radius);
-  border: 1px solid var(--color-input-border);
-  font-size: 0.9rem;
-  font-weight: var(--font-weight-semibold);
-  text-align: center;
   color: var(--color-accent);
 }
 
-/* Scrollbar styling for description if overflow */
-
-.detailed-info div {
-  max-height: 200px;
-  overflow-y: auto;
-  padding-right: 0.5rem;
+.user-info {
+  text-align: center;
 }
 
-.detailed-info div::-webkit-scrollbar {
-  width: var(--scrollbar-height);
-}
-
-.detailed-info h2 {
-    margin-left: 0rem;
-}
-
-.detailed-info div::-webkit-scrollbar-thumb {
+.user-info button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.25rem;
   background-color: var(--color-accent);
+  border: none;
   border-radius: var(--border-radius);
+  color: var(--color-background);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
 }
 
-.detailed-info div::-webkit-scrollbar-track {
-  background: var(--color-background-alt);
+.user-info button:hover {
+  background-color: var(--color-accent-hover, #ff7a59);
+  transform: translateY(-2px);
 }

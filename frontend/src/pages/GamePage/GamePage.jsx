@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Navbar from '../../components/Navbar/Navbar.jsx';
+import AddToListPopup from '../../components/AddToListPopup/AddToListPopup.jsx';
 import "./GamePage.css";
 
 function GamePage() {
   const { gameId } = useParams()
 
   const [game, setGame] = useState(null);
+
+  const [showPopup, setShowPopup] = useState(false)
 
   //maybe then for suggestions...
   //const [similarGames, setSimilarGames] = useState([])
@@ -44,12 +47,20 @@ function GamePage() {
             <img src={game.background_image} alt={game.name}></img>
           
             <p>Released on {game.released}</p>
-            <p>Metacritic Score: {game.metacritic} / 100</p>
-            <p>Rating: {game.rating} / 5.00</p>
-            
+            <p>Metacritic Score: {game.metacritic ? (game.metacritic + "/100") : "N/A"}</p>          
             <p>
               Platforms: {game.platforms.map(p => p.platform.name).join(", ")} 
             </p>
+
+        </div>
+
+        <div className="user-info">
+            <p>Added by {game.added} users!</p>
+            <p>User Score: {game.rating * 2} / 10</p>
+            <button onClick={() => setShowPopup(true)}>Add to My List</button> 
+
+            {/*Add a section for discussion board maybe?*/}
+
 
         </div>
 
@@ -58,14 +69,15 @@ function GamePage() {
           {parse(game.description)} {/*i can use description_raw to not have to use parse but then i have to fiugure out how to make the indents and shiet*/}
         </div>
 
-        <div className="user-info">
-            <p>Added by {game.added} users!</p>
-        </div>
+        
+
+        {showPopup && (<AddToListPopup onClose={() => setShowPopup(false)}></AddToListPopup>)/*If showPopUp is true (from pressing Add to List), then dispay the popup */}
+
       </div>
     </>
   );
 }
-
+//the Add to My List wll give a pop uop and let you give it a rating out of 10 and make a review and give a status (played, dropped, etc)
 export default GamePage;
 
 //we have the game id, use that to make an api call for all info for this specific game, display it all
