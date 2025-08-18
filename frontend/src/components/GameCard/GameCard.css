@@ -16,6 +16,8 @@
 .game-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 8px 16px var(--color-shadow-hover);
+
+  border: 1px solid var(--color-accent);
 }
 
 .game-card img {

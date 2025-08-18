@@ -1,5 +1,5 @@
 :root {
-  /* Colors */ 
+  /* Colors orange+black*/ 
   --color-background: #121212;
   --color-background-alt: #1e1e1e;
   --color-text: #eee;
@@ -15,6 +15,23 @@
   --color-shadow: rgba(231, 111, 81, 0.2);
   --color-shadow-hover: rgba(231, 111, 81, 0.4);
   
+
+  /* Colors red+black*/
+  --color-background: #121212;          /* deep black background */
+  --color-background-alt: #1e1e1e;      /* slightly lighter black for cards/popups */
+  --color-text: #f5f5f5;                /* light text for contrast */
+  --color-accent: #e63946;              /* bold red accent */
+  --color-accent-hover: #b0002a;        /* darker red on hover */
+  --color-navbar-bg: #1e1e1e;           /* dark navbar */
+  --color-navbar-border: #e63946;       /* red border for navbar */
+  --color-input-bg: #2a2a2a;            /* dark input background */
+  --color-input-border: #444;           /* subtle border */
+  --color-input-border-focus: #e63946;  /* red focus border */
+  --color-button-bg: #e63946;           /* red buttons */
+  --color-button-text: #f5f5f5;         /* light text on buttons */
+  --color-shadow: rgba(230, 57, 70, 0.2);   /* soft red shadow */
+  --color-shadow-hover: rgba(230, 57, 70, 0.4); /* stronger on hover */
+
 
 
 

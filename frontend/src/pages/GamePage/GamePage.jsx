@@ -55,21 +55,17 @@ function GamePage() {
         </div>
 
         <div className="user-info">
-            <p>Added by {game.added} users!</p>
-            <p>User Score: {game.rating * 2} / 10</p>
-            <button onClick={() => setShowPopup(true)}>Add to My List</button> 
+          <p>Added by {game.added} users!</p>
+          <p>User Score: {game.rating * 2} / 10</p>
+          <button onClick={() => setShowPopup(true)}>Add to My List</button> 
 
-            {/*Add a section for discussion board maybe?*/}
-
-
+          {/*Add a section for discussion board maybe?*/}
         </div>
 
         <div className="detailed-info">
           <h2>Description</h2>
           {parse(game.description)} {/*i can use description_raw to not have to use parse but then i have to fiugure out how to make the indents and shiet*/}
         </div>
-
-        
 
         {showPopup && (<AddToListPopup onClose={() => setShowPopup(false)}></AddToListPopup>)/*If showPopUp is true (from pressing Add to List), then dispay the popup */}
 

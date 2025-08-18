@@ -17,7 +17,7 @@ function Home() {
     const fetchGames = () => {
         const url = import.meta.env.VITE_SERVER_URL //where our backend lives (the Flask): CHANGE THIS IF FETCHING FROM SOMEWHERE ELSE
 
-         // TRENDING GAMES
+        // TRENDING GAMES
         axios.get(url + '/api/trending-games')
         .then(response => setTrendingGames(response.data.results))
         .catch(err => console.log("Error fetching trending games: ", err))
@@ -100,7 +100,6 @@ function Home() {
                     </div>
                 </div>
             </div>
-            
         </div>
     );
 }
