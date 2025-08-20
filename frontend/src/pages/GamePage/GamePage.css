@@ -74,11 +74,12 @@
   background-color: var(--color-accent);
   border: none;
   border-radius: var(--border-radius);
-  color: var(--color-background);
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.15s ease;
   box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+
+  color: var(--color-text);
 }
 
 .user-info button:hover {

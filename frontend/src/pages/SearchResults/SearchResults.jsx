@@ -50,6 +50,12 @@ function SearchResults() {
     return (
         <>
             <Navbar msg="Fieros - Search Results"></Navbar>
+            <div className='disp-msg'>
+                <span>Displaying results for "</span>
+                <span id="query">{searchQuery}</span>
+                <span>"</span>
+            </div>
+   
             <div className='sorting'>
                
             </div>

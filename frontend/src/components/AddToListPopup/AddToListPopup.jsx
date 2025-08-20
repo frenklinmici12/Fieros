@@ -31,7 +31,7 @@ function AddToListPopup( {onClose} ) {
 
                 <div className="navigation">
                     <button onClick={onClose}>Cancel</button>
-                    <button onClick={onClose}>Save</button>
+                    <button id='saveBtn' onClick={onClose}>Save</button>
                 </div>
             </div>
         </div>

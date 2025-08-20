@@ -86,3 +86,14 @@
   color: var(--color-accent);
   user-select: none;
 }
+
+.disp-msg {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent);
+  text-align: center;
+  margin-top: 20px;
+}
+
+#query {
+  text-decoration: underline;
+}

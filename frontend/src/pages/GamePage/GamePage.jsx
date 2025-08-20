@@ -47,6 +47,7 @@ function GamePage() {
             <img src={game.background_image} alt={game.name}></img>
           
             <p>Released on {game.released}</p>
+            <p>Developed by {game.developers.map(dev => dev.name).join(", ")}</p>
             <p>Metacritic Score: {game.metacritic ? (game.metacritic + "/100") : "N/A"}</p>          
             <p>
               Platforms: {game.platforms.map(p => p.platform.name).join(", ")} 
