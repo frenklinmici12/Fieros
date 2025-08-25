@@ -1,0 +1,95 @@
+/* Genres.css */
+
+.genre-list {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  font-family: var(--font-family-base);
+  color: var(--color-text);
+}
+
+.genre-list ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* responsive card width */
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+/* Genres.css */
+
+/* ...keep existing styles above ... */
+
+.genre-list li {
+  background-color: var(--color-background-alt);
+  border: 1px solid var(--color-input-border);
+  border-radius: var(--card-border-radius);
+  box-shadow: 0 4px 10px var(--color-shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-height: 250px; /* uniform card height */
+
+
+}
+
+/* Make entire card clickable */
+.genre-list li a {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+  text-decoration: none;
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+}
+
+/* Reduce the "text container" area */
+.genre-list li a span {
+  display: block;
+  padding: 5px 0; /* smaller padding */
+  
+}
+
+/* Hover effects */
+.genre-list li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px var(--color-shadow-hover);
+
+  border: 1px solid var(--color-accent);
+}
+
+.genre-list li a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* Image */
+.genre-list li img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-input-border);
+}
+
+/* Optional paragraph under name */
+.genre-list li p {
+  font-weight: 400;
+  color: var(--color-text);
+  font-size: 14px;
+  margin: 5px 10px 10px 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .genre-list ul {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    gap: 15px;
+  }
+  .genre-list li {
+    min-height: 200px;
+  }
+}
