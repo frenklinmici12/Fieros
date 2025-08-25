@@ -9,7 +9,7 @@ function Navbar( props ) {
 
     const navigate = useNavigate() //set up navigator
 
-    const handleSearch = () => { //when enter is pr
+    const handleSearch = () => { //when enter is pressed 
         if (searchQuery != "") {
             navigate(`/results?search_query=${encodeURIComponent(searchQuery)}`)
         }
