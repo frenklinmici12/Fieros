@@ -108,8 +108,15 @@ def search(search_query):
     url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&search={search_query}" 
     return fetch_data(url)
 
-# Genres
-@app.route("/api/games/genre/<string:genre>")
+# list of genres
+@app.route("/api/genres")
+@cache.cached()
+def genres():
+    url = f"https://api.rawg.io/api/genres?key={API_KEY}&page_size=40"
+    return fetch_data(url)
+
+# games by genre
+@app.route("/api/genres/<string:genre>")
 @cache.cached()
 def genre(genre):
     url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&genres={genre}" 
