@@ -1,0 +1,7 @@
+How it works:
+
+.venv -> python environment with all packages installed
+requirements.txt -> all dependencies for the .venv
+.env -> api key stored here (and other private info if neccesary) do NOT reveal this!
+app.py -> backend build, api requests
+Procfile -> what Render uses to run the server. that command starts the server using file name (app) : app name (app)

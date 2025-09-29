@@ -58,7 +58,7 @@ def fetch_data(url):
 @app.route("/api/trending-games")
 @cache.cached()
 def trending_games():
-    url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&ordering=-added&dates=2025-06-15,2026-08-16" 
+    url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&ordering=-added&dates=2025-07-15,2026-09-25" 
     #page_size is how many games it will fetch, 
     #ordering=-added is games most added by users (to give us the most popular games rn)
     return fetch_data(url)
