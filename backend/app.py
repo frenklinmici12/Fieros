@@ -3,12 +3,17 @@
 
 # RAWG API docs: https://api.rawg.io/docs/
 
-from flask import Flask, jsonify #framework, json
+# some notes ...
+# request : FLASK library, for looking at data sent by client
+# requests (plural!) python library, for fetching data from elsewhere (RAWG API in this case)
+
+from flask import Flask, jsonify, request, session #framework, json, for looking at data sent by frontend, session for sessions (Duh) (its for keeping track of if a user is logged in or not)
 from flask_cors import CORS #for linking frontend to backend
 from flask_caching import Cache # cache data saves api calls and really efficient
 from dotenv import load_dotenv # .env for api key
 import requests # fetch from api
 import os # access .env
+from werkzeug.security import generate_password_hash, check_password_hash # hash passwords (never store passwords as plain text security issues !!!)
 
 load_dotenv()  # loads .env file variables
 API_KEY = os.getenv("RAWG_API_KEY") # in the .env file
@@ -18,9 +23,11 @@ CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 # Simple in-memory cache configuration, each decorator will use this config
 app.config['CACHE_TYPE'] = 'SimpleCache'
-app.config['CACHE_DEFAULT_TIMEOUT'] = 36000  # 10 hours = 36000 seconds
+app.config['CACHE_DEFAULT_TIMEOUT'] = 36000  # 10 hours = 36000 seconds (means it wont change whats in cache for 10 hours)
 cache = Cache(app)
 
+#key for sessions
+app.secret_key = "my_key"  # for learning, you can hardcode
 
 # ========================== FETCHING GAMES ==========================
 
@@ -58,7 +65,7 @@ def fetch_data(url):
 @app.route("/api/trending-games")
 @cache.cached()
 def trending_games():
-    url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&ordering=-added&dates=2025-07-15,2026-09-25" 
+    url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&ordering=-added&dates=2025-10-15,2026-09-25" 
     #page_size is how many games it will fetch, 
     #ordering=-added is games most added by users (to give us the most popular games rn)
     return fetch_data(url)
@@ -81,7 +88,7 @@ def top_rated_games():
 @app.route("/api/most-anticipated")
 @cache.cached()
 def most_anticipated():
-    url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&dates=2025-08-16,2030-08-01&ordering=-added" 
+    url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&dates=2026-01-16,2030-08-01&ordering=-added" 
     return fetch_data(url)
 
 # Home
@@ -107,6 +114,8 @@ def game_page(game_id):
 def search(search_query):
     url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&search={search_query}" 
     return fetch_data(url)
+#shoudl proabbly sort by popular or something to not give
+
 
 # list of genres
 @app.route("/api/genres")
@@ -122,7 +131,89 @@ def genre(genre):
     url = f"https://api.rawg.io/api/games?key={API_KEY}&page_size=40&genres={genre}" 
     return fetch_data(url)
 
+# ========================== ACCOUNTS ==========================
 
+#use this dummy for learning purpsoses before doing sql
+fake_db = {
+    "frenk": generate_password_hash("123"),
+    "cj": generate_password_hash("sorry")
+}
+
+# get the data entered by client with POST (uses request)
+@app.route("/auth/register", methods=["POST"])
+def register():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    # For now, just print to see it works
+    print("Received:", username, password)
+
+    #avoid overwriting someone else's account!
+    if username in fake_db:
+        return jsonify({"message": f"ERROR: Username {username} already exists."}), 401
+
+    # hash password for security
+    password_hash = generate_password_hash(password)
+
+    #TODO now, send to data base so that you can login in the future 
+    fake_db[username] = password_hash
+    print(fake_db)
+
+    return jsonify({"message": f"TEST ONLY: User succesfully created. user is {username} and pass is {password}"}), 201
+
+    
+
+@app.route("/auth/login", methods=["POST"])
+def login():
+    data = request.get_json()
+    
+    username = data.get("username")
+    password = data.get("password")
+
+    # For now, just print to see it works
+    print("Received:", username, password)
+
+    if not username or not password:
+        return jsonify({"message": "Invalid username or password."}), 400
+
+    #TODO lookup the username and password hash in db, if there exists a match, log in, else nope
+    # Lookup user
+    stored_hash = fake_db.get(username)
+    if stored_hash and check_password_hash(stored_hash, password):
+        #user succesfully authenticates
+        session["username"] = username #store in session
+        print(session["username"])
+        return jsonify({"message": "Successful login!"}), 200
+
+    return jsonify({"message": "Invalid username or password."})
+
+@app.route("/profile")
+def profile():
+    if "username" in session:
+        username = session["username"]
+        #fetch info from user (games list with reviews...)
+        print("profile found")
+        return jsonify({"message": f"Welcome to your profile, {username}"})
+    else:
+        return jsonify({"message": "You must be logged in to view your profile."})
+    
+@app.route("/logout")
+def logout():
+    print("logging out")
+    session.pop("username", None)
+    return jsonify({"message": "You have logged out."})
+
+
+#check we're logged in
+@app.route("/auth/check")
+def check_login():
+    if "username" in session:
+        return jsonify({"loggedIn" : True, "username" : session["username"]}) #and also pfp eventually!
+    else:
+        return jsonify({"loggedIn" : False})
+
+# use sqlachemy 
 
 #run backend
 if __name__ == "__main__":

@@ -16,6 +16,7 @@ import GamePage from './pages/GamePage/GamePage.jsx'
 import SearchResults from './pages/SearchResults/SearchResults.jsx';
 import About from './pages/About/About.jsx';
 import Register from './pages/Register/Register.jsx';
+import Profile from './pages/Profile/Profile.jsx';
 
 import './App.css';
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/results" element={<SearchResults/>}></Route>
         {/*<Route path="/user/:userName" element={<UserProfile/>}></Route>*/}
         <Route path="/about" element={<About/>}></Route>
+        <Route path="/profile" element={<Profile/>}></Route>
       </Routes>
     </Router>
   );

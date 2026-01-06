@@ -1,0 +1,29 @@
+.login {
+  margin-right: 1rem;
+  padding: 0.35rem 0.9rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+  font-weight: var(--font-weight-bold);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.login:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.pfp {
+  width: 50px;          /* set the size you want */
+  height: 50px;         /* keep width = height */
+  border-radius: 50%;   /* makes it a perfect circle */
+  object-fit: cover;    /* fills the circle and crops if needed */
+}
+
+.mini-profile {
+  display: flex;           /* side by side */
+  align-items: center;     /* vertically center the image and link */
+  gap: 0.5rem;             /* optional spacing between image and link */
+}

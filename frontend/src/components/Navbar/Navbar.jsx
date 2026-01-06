@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Link , useNavigate} from 'react-router-dom';
 
+import '../MiniProfile/MiniProfile.jsx'
 import './Navbar.css'
+import MiniProfile from '../MiniProfile/MiniProfile.jsx';
 
 //@app.route("/api/<string:search_query>")
 function Navbar( props ) {
@@ -20,7 +22,10 @@ function Navbar( props ) {
 
     return (
         <div>
-            <h1>{props.msg}</h1>
+            <div className='upper'>
+                <Link to="/" id='title'><h1>{props.msg}</h1></Link>
+                <MiniProfile></MiniProfile>
+            </div>
             <nav className='navbar'>
                 <Link to="/">Home</Link> |{" "}
                 <Link to="/genres">Genres</Link> |{" "}
