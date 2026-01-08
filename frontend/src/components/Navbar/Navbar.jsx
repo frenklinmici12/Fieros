@@ -8,7 +8,7 @@ import '../MiniProfile/MiniProfile.jsx'
 import './Navbar.css'
 
 import MiniProfile from '../MiniProfile/MiniProfile.jsx';
-import fieros_logo from '/Users/frenklinmici/coding/Fieros/frontend/src/assets/fieros_logo.png'
+import fieros_logo from '../../assets/fieros_logo.png'
 
 function Navbar( props ) {
     const { user } = useContext(UserContext)

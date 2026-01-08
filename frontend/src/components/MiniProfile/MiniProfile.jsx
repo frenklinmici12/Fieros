@@ -12,7 +12,7 @@ function MiniProfile() {
     return (
         <div className='mini-profile'>
             <img className='pfp' src={defaultPfp}></img>
-            <Link className='login' to={user.loggedIn ? "/profile" : "/login"}>{user.loggedIn ? user.username : "Not currently logged in"}</Link>
+            <Link className='login' to={user.loggedIn ? "/profile" : "/login"}>{user.loggedIn ? user.username : "Login"}</Link>
         </div>
     );
 }
