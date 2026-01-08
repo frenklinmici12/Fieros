@@ -12,7 +12,10 @@ h1, h2 {
 }
 
 #title {
-  text-decoration: none;
+  display: flex;          /* make logo + h1 horizontal */
+  align-items: center;    /* vertically center them */
+  gap: 0.5rem;            /* spacing between logo and title */
+  text-decoration: none; 
 }
 
 .navbar {
@@ -74,3 +77,12 @@ h1, h2 {
   align-items: center;
 }
 
+
+
+.logo {
+  height: 60px;           /* adjust size as needed */
+  width: auto;
+  margin-left: 1rem;
+  border-radius: 10px;
+  border: 3px solid var(--color-accent);
+}

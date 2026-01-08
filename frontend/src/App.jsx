@@ -17,6 +17,7 @@ import SearchResults from './pages/SearchResults/SearchResults.jsx';
 import About from './pages/About/About.jsx';
 import Register from './pages/Register/Register.jsx';
 import Profile from './pages/Profile/Profile.jsx';
+import Community from './pages/Community/Community.jsx';
 
 import './App.css';
 
@@ -34,6 +35,7 @@ function App() {
         {/*<Route path="/user/:userName" element={<UserProfile/>}></Route>*/}
         <Route path="/about" element={<About/>}></Route>
         <Route path="/profile" element={<Profile/>}></Route>
+        <Route path="/community" element={<Community/>}></Route>
       </Routes>
     </Router>
   );

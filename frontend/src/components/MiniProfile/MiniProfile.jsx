@@ -1,13 +1,13 @@
-import { useState , useEffect, useContext} from 'react';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
-import "./MiniProfile.css"
 import { UserContext } from '../../UserContext';
 
+import "./MiniProfile.css"
 import defaultPfp from "../../assets/default-pfp.avif"
 
 function MiniProfile() {
     const { user } = useContext(UserContext)
+    const { setUser } = useContext(UserContext)
 
     return (
         <div className='mini-profile'>
