@@ -19,7 +19,10 @@ load_dotenv()  # loads .env file variables
 API_KEY = os.getenv("RAWG_API_KEY") # in the .env file
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}, supports_credentials=True)
+
+SESSION_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = False  # True only on HTTPS
 
 # Simple in-memory cache configuration, each decorator will use this config
 app.config['CACHE_TYPE'] = 'SimpleCache'
@@ -32,7 +35,6 @@ app.secret_key = "my_key"  # for learning, you can hardcode
 # ========================== FETCHING GAMES ==========================
 
 #just making sure its working!
-@cache.cached()
 @app.route("/")
 def home():
     return jsonify({"message": "Fieros backend is working!"})
@@ -217,4 +219,4 @@ def check_login():
 
 #run backend
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5001, debug=True)
+    app.run(host="localhost", port=5001, debug=True)
