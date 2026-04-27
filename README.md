@@ -46,15 +46,18 @@ Fieros is a full-stack web application designed to help gamers track, organize, 
 3. Set Up Virtual Environment:
 
    python3 -m venv .venv
+   
    source .venv/bin/activate
+   
    pip install -r requirements.txt
 
-4. Start the backend
+5. Start the backend
    python3 app.py
 
 6. Navigate to frontend folder
 7. Install frontend dependencies and run
    npm install
+   
    npm run dev
 
 ## Demo
