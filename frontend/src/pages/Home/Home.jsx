@@ -47,6 +47,12 @@ function Home() {
     useEffect(() => {
         fetchGames()
     }, [])
+
+    
+    // if api doesn't have data yet, let user know its loading
+    if (!trendingGames) return (
+        <><Navbar msg="Welcome to Fieros!"></Navbar><p id='loading-msg'>Loading... (This may take a minute!)</p></>
+    );
     
     //the actual page
     return (
