@@ -7,11 +7,11 @@ import './Home.css';
 
 function Home() {
     //where our RAWG api data will live
-    const [trendingGames, setTrendingGames] = useState([]);
-    const [featuredGames, setFeaturedGames] = useState([]);
-    const [mostAnticipated, setMostAnticipated] = useState([]);
-    const [newGames, setNewGames] = useState([])
-    const [topRatedGames, setTopRatedGames] = useState([])
+    const [trendingGames, setTrendingGames] = useState(null);
+    const [featuredGames, setFeaturedGames] = useState(null);
+    const [mostAnticipated, setMostAnticipated] = useState(null);
+    const [newGames, setNewGames] = useState(null)
+    const [topRatedGames, setTopRatedGames] = useState(null)
 
     //fetch from backend
     const fetchGames = () => {

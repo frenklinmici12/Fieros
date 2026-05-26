@@ -9,9 +9,7 @@ import "./GamePage.css";
 
 function GamePage() {
   const { gameId } = useParams()
-
   const [game, setGame] = useState(null);
-
   const [showPopup, setShowPopup] = useState(false)
 
   //maybe then for suggestions...
